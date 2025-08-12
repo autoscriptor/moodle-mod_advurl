@@ -37,7 +37,7 @@ A powerful Moodle activity module that enhances external link management with ad
 ### Method 1: Git Clone
 ```bash
 cd /path/to/moodle/mod
-git clone https://github.com/yourusername/moodle-mod_advurl.git advurl
+git clone https://github.com/autoscriptor/moodle-mod_advurl.git advurl
 ```
 
 ### Method 2: Manual Installation
@@ -103,7 +103,7 @@ git clone https://github.com/yourusername/moodle-mod_advurl.git advurl
 ### Local Development Setup
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/moodle-mod_advurl.git
+git clone https://github.com/autoscriptor/moodle-mod_advurl.git
 
 # Install in Moodle development environment
 cp -r moodle-mod_advurl /path/to/moodle/mod/advurl
@@ -182,7 +182,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 **Walid Alieldin**
 - Email: walid.alieldin@gmail.com
-- GitHub: [@yourusername](https://github.com/autoscriptor)
+- GitHub: [@autoscriptor](https://github.com/autoscriptor)
 
 ## 🙏 Acknowledgments
 
