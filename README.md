@@ -3,7 +3,7 @@
 [![Moodle Plugin](https://img.shields.io/badge/Moodle-Plugin-orange.svg)](https://moodle.org/plugins/)
 [![Moodle Version](https://img.shields.io/badge/Moodle-4.0+-blue.svg)](https://moodle.org/)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.1-brightgreen.svg)](version.php)
+[![Version](https://img.shields.io/badge/Version-1.0.9-brightgreen.svg)](version.php)
 
 A powerful Moodle activity module that enhances external link management with advanced features including YouTube embedding, broken link reporting, and course-level configuration.
 
@@ -131,6 +131,39 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 5. Submit a pull request
 
 ## 📝 Changelog
+
+### Version 1.0.9 (2025-01-27)
+- **Fixed**: YouTube video aspect ratio to eliminate black bars
+- **Improved**: Custom URL validation with better error messages
+- **Enhanced**: User experience with clearer validation feedback
+
+### Version 1.0.8 (2025-01-27)
+- **Added**: Custom URL validation error messages
+- **Improved**: User guidance for URL format requirements
+
+### Version 1.0.7 (2025-01-27)
+- **Fixed**: YouTube responsive embed parameters
+- **Enhanced**: Video display with modern CSS aspect-ratio
+
+### Version 1.0.6 (2025-01-27)
+- **Fixed**: YouTube video aspect ratio issues
+- **Improved**: Video container styling
+
+### Version 1.0.5 (2025-01-27)
+- **Fixed**: CSS compatibility for YouTube embed styling
+- **Enhanced**: Cross-version Moodle compatibility
+
+### Version 1.0.4 (2025-01-27)
+- **Added**: Backward compatibility wrappers for function names
+- **Fixed**: Fresh installation compatibility issues
+
+### Version 1.0.3 (2025-01-27)
+- **Fixed**: Syntax error in language file
+- **Improved**: Code quality
+
+### Version 1.0.2 (2025-01-27)
+- **Fixed**: "Show Disclaimer" default value
+- **Enhanced**: Form behavior consistency
 
 ### Version 1.0.1 (2025-01-27)
 - **Fixed**: Function names to comply with Moodle frankenstyle standards
