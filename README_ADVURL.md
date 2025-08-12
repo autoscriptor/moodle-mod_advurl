@@ -28,23 +28,27 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - Two buttons displayed prominently:
   - **"Open Link in a New Tab"** – opens the external resource in a new tab (or YouTube).
   - **"Report Broken Link"** – submits a report to the system (see below).
-- A **disclaimer message** is displayed (customizable per institution).
+- A **disclaimer message** is displayed (customizable per institution name).
 - **YouTube Detection**: Automatically detects and embeds YouTube videos when enabled.
+- **Responsive Video Player**: Modern aspect ratio with no black bars.
 - A **footer notice** is present at the bottom of the page.
 
 ### 3. YouTube Integration
 - **Automatic Detection**: Recognizes YouTube URLs in various formats.
 - **Smart Embedding**: Embeds videos directly on the page when enabled.
 - **Fallback Support**: Always provides "Open in New Tab" option.
-- **Responsive Design**: Mobile-friendly video player.
+- **Responsive Design**: Mobile-friendly video player with modern aspect ratio.
+- **No Letterboxing**: Eliminates black bars for optimal viewing experience.
 
 ---
 
 ## 🧠 Reporting System
 
 ### Report Button Behavior:
-- Appears to all authenticated users (students, teachers, etc.)
-- Sends a **broken link report** via `email_to_user()` to configured course email.
+- Appears to all authenticated users with appropriate permissions.
+- **Always visible** regardless of email configuration.
+- If email is configured: Sends a **broken link report** via `email_to_user()` to configured course email.
+- If no email is configured: Still logs the report to the dashboard for tracking.
 - Report includes:
   - External URL
   - Course name and ID
@@ -70,6 +74,8 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - **Reports Management**: View and manage all broken link reports.
 - **Status Updates**: Mark reports as resolved, false positive, or reopen.
 - **Real-time Updates**: Instant status changes with visual feedback.
+- **Email Validation**: Server-side validation for email addresses.
+- **Status Tracking**: Color-coded badges for easy identification.
 
 ### Teacher View:
 - **Advanced URL Dashboard** accessible from course navigation.
@@ -95,16 +101,17 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - `dashboard.php`: course settings and reports management.
 - `report.php`: handles broken link submissions and email notifications.
 - `lib.php`: implements plugin logic, hooks, and YouTube detection.
-- `mod_form.php`: activity creation/editing form.
+- `mod_form.php`: activity creation/editing form with custom validation.
 - `version.php`: defines plugin version and metadata.
 - `db/install.xml`: defines database tables.
 - `db/upgrade.php`: manages version upgrades.
 - `lang/en/advurl.php`: contains plugin language strings.
 - `pix/icon.svg`: plugin icon.
+- `classes/privacy/provider.php`: GDPR compliance implementation.
 
 ### Current Version:
-- **2025072900**
-- Release: `1.0.1` (Stable)
+- **2025072909**
+- Release: `1.0.9` (Stable)
 
 ---
 
@@ -112,6 +119,8 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 
 - **iframe embedding** has been completely disabled due to security concerns and inconsistent display behavior.
 - The `display` setting was deprecated in code but may still be present in legacy installs for backwards compatibility.
+- **Hardcoded email addresses** - now configurable per course.
+- **Generic error messages** - replaced with custom, user-friendly validation messages.
 
 ---
 
@@ -124,6 +133,8 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - Analytics dashboard showing link usage and broken links.
 - Support for additional media platforms (Vimeo, audio files, etc.).
 - Advanced filtering and sorting in reports table.
+- Auto-prepend https:// for URLs without protocol.
+- Enhanced YouTube analytics and tracking.
 
 ---
 
@@ -150,4 +161,29 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - User activity is logged for broken link reports
 - GDPR compliant with data export/deletion capabilities
 - No personal data stored beyond reporting functionality
+- CSRF protection on all forms
+- Input validation and output escaping
+- Capability-based access control
+
+---
+
+## 🆕 Recent Improvements (v1.0.9)
+
+### YouTube Video Enhancement:
+- **Fixed aspect ratio** to eliminate black bars (letterboxing)
+- **Modern CSS implementation** using aspect-ratio property
+- **Responsive design** that works across all devices
+- **Enhanced embed parameters** for better performance
+
+### User Experience Improvements:
+- **Custom URL validation** with helpful error messages
+- **Better form feedback** for URL format requirements
+- **Improved error handling** throughout the plugin
+- **Enhanced visual design** with modern styling
+
+### Technical Enhancements:
+- **Frankenstyle compliance** for all function names
+- **Backward compatibility** for fresh installations
+- **Cross-version compatibility** across Moodle versions
+- **Comprehensive upgrade path** from all previous versions
 
