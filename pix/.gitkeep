@@ -1,0 +1,3 @@
+# This file ensures the pix directory exists
+# The plugin uses Moodle's built-in icons (i/externallink)
+# This directory is required by Moodle's plugin validation

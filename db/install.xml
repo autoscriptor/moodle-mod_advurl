@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/advurl/db" VERSION="2025072800" COMMENT="Definition of tables for advanced URL plugin">
+    <TABLES>
+        <TABLE NAME="advurl" COMMENT="Stores configuration for each advanced URL instance">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
+                <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true"/>
+                <FIELD NAME="intro" TYPE="text" NOTNULL="false"/>
+                <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="externalurl" TYPE="char" LENGTH="255" NOTNULL="true"/>
+                <FIELD NAME="display" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="embed" COMMENT="Display type: embed or newtab"/>
+                <FIELD NAME="showleave" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" COMMENT="Whether to show leave warning"/>
+                <FIELD NAME="showdescription" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" COMMENT="Whether to show description on course page"/>
+                <FIELD NAME="detect_youtube" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" COMMENT="Whether to detect and embed YouTube videos"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="course" TYPE="foreign" FIELDS="course" REFTABLE="course" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="advurl_reports" COMMENT="Records when users report broken links">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
+                <FIELD NAME="advurlid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" COMMENT="course module id"/>
+                <FIELD NAME="url" TYPE="char" LENGTH="255" NOTNULL="true"/>
+                <FIELD NAME="reportedby" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="reporttime" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="open" COMMENT="open|resolved|false_positive"/>
+                <FIELD NAME="resolvedby" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true"/>
+                <FIELD NAME="resolvedtime" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="advurlid" TYPE="foreign" FIELDS="advurlid" REFTABLE="advurl" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="courseid_idx" UNIQUE="false" FIELDS="courseid"/>
+                <INDEX NAME="status_idx" UNIQUE="false" FIELDS="status"/>
+            </INDEXES>
+        </TABLE>
+
+        <TABLE NAME="advurl_course_settings" COMMENT="Stores course-specific settings for Advanced URL">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true"/>
+                <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+                <FIELD NAME="reportemail" TYPE="char" LENGTH="255" NOTNULL="false"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="courseid_fk" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <!-- No additional indexes needed - foreign key provides uniqueness -->
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>
