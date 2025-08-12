@@ -51,7 +51,7 @@ class mod_advurl_mod_form extends moodleform_mod {
         $this->standard_intro_elements();
 
         // External URL.
-        $mform->addElement('url', 'externalurl', get_string('externalurl', 'mod_advurl'), ['size' => '64'], ['usefilepicker' => false]);
+        $mform->addElement('text', 'externalurl', get_string('externalurl', 'mod_advurl'), ['size' => '64']);
         $mform->addRule('externalurl', null, 'required', null, 'client');
         $mform->setType('externalurl', PARAM_URL);
         $mform->addHelpButton('externalurl', 'externalurl', 'mod_advurl');
@@ -105,7 +105,7 @@ class mod_advurl_mod_form extends moodleform_mod {
         $errors = parent::validation($data, $files);
         // Validate URL.
         if (!empty($data['externalurl']) && !filter_var($data['externalurl'], FILTER_VALIDATE_URL)) {
-            $errors['externalurl'] = get_string('invalidurl', 'error');
+            $errors['externalurl'] = get_string('externalurl_required', 'mod_advurl');
         }
         return $errors;
     }

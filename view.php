@@ -96,20 +96,16 @@ $openbutton = html_writer::tag('a', get_string('openinnewtab', 'mod_advurl'), [
 ]);
 echo html_writer::div($openbutton, 'advurl-openlink d-inline-block mr-2');
 
-// Report broken link button (if user has permission and email is configured)
-if (has_capability('mod/advurl:reportbroken', $PAGE->context)) {
-    // Check if course has report email configured
-    $coursesettings = $DB->get_record('advurl_course_settings', ['courseid' => $course->id]);
-    if (!empty($coursesettings->reportemail)) {
-        $reporturl = new moodle_url('/mod/advurl/report.php', ['id' => $cm->id]);
-        $reportbutton = html_writer::tag('a', get_string('reportbrokenlink', 'mod_advurl'), [
-            'href' => $reporturl,
-            'class' => 'btn btn-secondary',
-            'role' => 'button'
-        ]);
-        echo html_writer::div($reportbutton, 'advurl-reportlink d-inline-block');
-    }
-}
+            // Report broken link button (if user has permission)
+            if (has_capability('mod/advurl:reportbroken', $PAGE->context)) {
+                $reporturl = new moodle_url('/mod/advurl/report.php', ['id' => $cm->id]);
+                $reportbutton = html_writer::tag('a', get_string('reportbrokenlink', 'mod_advurl'), [
+                    'href' => $reporturl,
+                    'class' => 'btn btn-secondary',
+                    'role' => 'button'
+                ]);
+                echo html_writer::div($reportbutton, 'advurl-reportlink d-inline-block');
+            }
 
 echo html_writer::end_div();
 

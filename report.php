@@ -52,47 +52,48 @@ require_once($CFG->libdir . '/moodlelib.php');
 
 // Get course settings for report email
 $coursesettings = $DB->get_record('advurl_course_settings', ['courseid' => $course->id]);
-if (empty($coursesettings->reportemail)) {
-    // No email configured, redirect with error
-    redirect($returnurl, 'No report email configured for this course.', 3);
+$email_sent = false;
+
+// Send email only if configured
+if (!empty($coursesettings->reportemail)) {
+    // Build a recipient object for the configured email. Use a dummy ID so email_to_user will still send.
+    $recipient = new stdClass();
+    $recipient->id        = -1;
+    $recipient->email     = $coursesettings->reportemail;
+    $recipient->firstname = 'Course';
+    $recipient->lastname  = 'Administrator';
+    $recipient->maildisplay = 1;
+    $recipient->emailstop   = 0;
+    $recipient->deleted     = 0;
+    $recipient->suspended   = 0;
+    $recipient->confirmed   = 1;
+    $recipient->auth        = 'manual';
+    $recipient->lang        = current_language();
+
+    // Use Moodle's noreply user as the sender.
+    $from = \core_user::get_noreply_user();
+
+    // Get site name with fallback for email
+    $sitename = !empty($SITE->fullname) ? $SITE->fullname : get_string('institution', 'core');
+
+    // Subject and body for the email.
+    $subject = 'Broken link report: ' . format_string($advurl->name);
+    $body  = "A broken link has been reported in {$sitename} Moodle.\n\n";
+    $body .= "Course: {$course->fullname} (ID: {$course->id})\n";
+    $body .= "Activity: {$advurl->name}\n";
+    $body .= "External URL: {$advurl->externalurl}\n";
+    $body .= "Course module ID: {$cm->id}\n";
+    $body .= "Reported by: {$USER->firstname} {$USER->lastname} (ID: {$USER->id}, Email: {$USER->email})\n";
+    $body .= "Report time: " . userdate($report->reporttime) . "\n\n";
+    $body .= "Please check the link and update or remove it if necessary.";
+
+    // HTML version of the email body.
+    $bodyhtml = text_to_html($body, false, false, true);
+
+    // Send the email; ignore any errors.
+    email_to_user($recipient, $from, $subject, $body, $bodyhtml);
+    $email_sent = true;
 }
-
-// Build a recipient object for the configured email. Use a dummy ID so email_to_user will still send.
-$recipient = new stdClass();
-$recipient->id        = -1;
-$recipient->email     = $coursesettings->reportemail;
-$recipient->firstname = 'Course';
-$recipient->lastname  = 'Administrator';
-$recipient->maildisplay = 1;
-$recipient->emailstop   = 0;
-$recipient->deleted     = 0;
-$recipient->suspended   = 0;
-$recipient->confirmed   = 1;
-$recipient->auth        = 'manual';
-$recipient->lang        = current_language();
-
-// Use Moodle's noreply user as the sender.
-$from = \core_user::get_noreply_user();
-
-// Get site name with fallback for email
-$sitename = !empty($SITE->fullname) ? $SITE->fullname : get_string('institution', 'core');
-
-// Subject and body for the email.
-$subject = 'Broken link report: ' . format_string($advurl->name);
-$body  = "A broken link has been reported in {$sitename} Moodle.\n\n";
-$body .= "Course: {$course->fullname} (ID: {$course->id})\n";
-$body .= "Activity: {$advurl->name}\n";
-$body .= "External URL: {$advurl->externalurl}\n";
-$body .= "Course module ID: {$cm->id}\n";
-$body .= "Reported by: {$USER->firstname} {$USER->lastname} (ID: {$USER->id}, Email: {$USER->email})\n";
-$body .= "Report time: " . userdate($report->reporttime) . "\n\n";
-$body .= "Please check the link and update or remove it if necessary.";
-
-// HTML version of the email body.
-$bodyhtml = text_to_html($body, false, false, true);
-
-// Send the email; ignore any errors.
-email_to_user($recipient, $from, $subject, $body, $bodyhtml);
 
 // Redirect back to the activity page with a thank‑you message.
 $returnurl = new moodle_url('/mod/advurl/view.php', ['id' => $cm->id]);

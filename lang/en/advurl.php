@@ -61,6 +61,9 @@ $string['savesettings'] = 'Save Settings';
 $string['settingssaved'] = 'Settings saved successfully.';
 $string['invalidemail'] = 'Please enter a valid email address.';
 
+// URL validation messages
+$string['externalurl_required'] = 'Please enter a complete URL (e.g., https://www.example.com)';
+
 // Reports table strings
 $string['reports'] = 'Broken Link Reports';
 $string['reports_help'] = 'View and manage broken link reports for this course.';
@@ -83,6 +86,6 @@ $string['confirm_status_change'] = 'Are you sure you want to change the status o
 // YouTube detection strings
 $string['detect_youtube'] = 'Detect YouTube links';
 $string['detect_youtube_help'] = 'If enabled, YouTube videos will be embedded directly on the page. Other links will open in a new tab as usual.';
-$string['leavewarning_youtube'] = 'The YouTube video displayed below is from an external source and may not bemaintained or controlled by {$a}. If the video does not load or play properly, you can click "Open in New Tab" to view it on YouTube, or click "Report Broken Link" to let us know.';
+$string['leavewarning_youtube'] = 'The YouTube video displayed below is from an external source and may not be maintained or controlled by {$a}. If the video does not load or play properly, you can click "Open in New Tab" to view it on YouTube, or click "Report Broken Link" to let us know.';
 $string['youtube_not_found'] = 'YouTube video not found. Opening in new tab instead.';
 $string['youtube_embed_failed'] = 'Unable to embed video. Opening in new tab instead.';

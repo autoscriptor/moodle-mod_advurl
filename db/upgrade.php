@@ -167,5 +167,45 @@ function xmldb_advurl_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2025072901, 'advurl');
     }
 
+    if ($oldversion < 2025072902) {
+        // Fix "Show Disclaimer" default value to be checked by default.
+        upgrade_mod_savepoint(true, 2025072902, 'advurl');
+    }
+
+    if ($oldversion < 2025072903) {
+        // Fix syntax error in language file (missing quote).
+        upgrade_mod_savepoint(true, 2025072903, 'advurl');
+    }
+
+    if ($oldversion < 2025072904) {
+        // Add backward compatibility wrappers for function names.
+        upgrade_mod_savepoint(true, 2025072904, 'advurl');
+    }
+
+    if ($oldversion < 2025072905) {
+        // Fix CSS compatibility issue for YouTube embed styling.
+        upgrade_mod_savepoint(true, 2025072905, 'advurl');
+    }
+
+    if ($oldversion < 2025072906) {
+        // Fix YouTube video aspect ratio to eliminate black bars.
+        upgrade_mod_savepoint(true, 2025072906, 'advurl');
+    }
+
+    if ($oldversion < 2025072907) {
+        // Implement YouTube responsive embed parameters to eliminate letterboxing.
+        upgrade_mod_savepoint(true, 2025072907, 'advurl');
+    }
+
+    if ($oldversion < 2025072908) {
+        // Add custom URL validation error message for better user experience.
+        upgrade_mod_savepoint(true, 2025072908, 'advurl');
+    }
+
+    if ($oldversion < 2025072909) {
+        // Fix URL field type to use custom validation instead of Moodle's built-in URL validation.
+        upgrade_mod_savepoint(true, 2025072909, 'advurl');
+    }
+
     return true;
 }

@@ -33,6 +33,13 @@ defined('MOODLE_INTERNAL') || die();
  * @param mod_advurl_mod_form $mform
  * @return int new instance id
  */
+// For backward compatibility, also provide the old function name
+if (!function_exists('advurl_add_instance')) {
+    function advurl_add_instance($data, $mform = null) {
+        return mod_advurl_add_instance($data, $mform);
+    }
+}
+
 function mod_advurl_add_instance($data, $mform = null) {
     global $DB;
     $data->timemodified = time();
@@ -50,6 +57,13 @@ function mod_advurl_add_instance($data, $mform = null) {
  * @param mod_advurl_mod_form $mform
  * @return bool success
  */
+// For backward compatibility, also provide the old function name
+if (!function_exists('advurl_update_instance')) {
+    function advurl_update_instance($data, $mform = null) {
+        return mod_advurl_update_instance($data, $mform);
+    }
+}
+
 function mod_advurl_update_instance($data, $mform = null) {
     global $DB;
     $data->timemodified = time();
@@ -65,6 +79,13 @@ function mod_advurl_update_instance($data, $mform = null) {
  * @param int $id
  * @return bool success
  */
+// For backward compatibility, also provide the old function name
+if (!function_exists('advurl_delete_instance')) {
+    function advurl_delete_instance($id) {
+        return mod_advurl_delete_instance($id);
+    }
+}
+
 function mod_advurl_delete_instance($id) {
     global $DB;
     if (!$advurl = $DB->get_record('advurl', ['id' => $id])) {
@@ -84,6 +105,13 @@ function mod_advurl_delete_instance($id) {
  * @param cm_info $cm Course-module
  * @return cached_cm_info|null
  */
+// For backward compatibility, also provide the old function name
+if (!function_exists('advurl_get_coursemodule_info')) {
+    function advurl_get_coursemodule_info($cm) {
+        return mod_advurl_get_coursemodule_info($cm);
+    }
+}
+
 function mod_advurl_get_coursemodule_info($cm) {
     global $DB;
     $info = new cached_cm_info();
@@ -109,6 +137,13 @@ function mod_advurl_get_coursemodule_info($cm) {
  * @param string $feature Feature constant
  * @return mixed True if supported, null if unknown
  */
+// For backward compatibility, also provide the old function name
+if (!function_exists('advurl_supports')) {
+    function advurl_supports($feature) {
+        return mod_advurl_supports($feature);
+    }
+}
+
 function mod_advurl_supports($feature) {
     switch ($feature) {
         case FEATURE_MOD_INTRO:
@@ -204,8 +239,45 @@ function mod_advurl_is_youtube_url($url) {
  * @return string HTML for YouTube embed
  */
 function mod_advurl_generate_youtube_embed($video_id, $title = '') {
-    $embed_url = 'https://www.youtube.com/embed/' . $video_id;
+    // Use YouTube's responsive embed URL with parameters to eliminate letterboxing
+    $embed_url = 'https://www.youtube.com/embed/' . $video_id . '?rel=0&modestbranding=1&showinfo=0';
     $title_attr = !empty($title) ? ' title="' . s($title) . '"' : '';
+    
+    // Add responsive CSS using inline method that works across Moodle versions
+    global $PAGE;
+    $PAGE->requires->js_init_code("
+        var style = document.createElement('style');
+        style.textContent = `
+            .advurl-youtube-embed {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                background: #000;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .advurl-youtube-embed iframe {
+                display: block;
+                width: 100%;
+                height: auto;
+                min-height: 400px;
+                border: none;
+                aspect-ratio: 16/9;
+            }
+            @media (min-width: 768px) {
+                .advurl-youtube-embed {
+                    max-width: 75%;
+                }
+            }
+            @media (min-width: 1200px) {
+                .advurl-youtube-embed {
+                    max-width: 60%;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    ");
     
     return html_writer::div(
         html_writer::tag('iframe', '', [
@@ -215,9 +287,9 @@ function mod_advurl_generate_youtube_embed($video_id, $title = '') {
             'frameborder' => '0',
             'allowfullscreen' => 'allowfullscreen',
             'allow' => 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
-            'loading' => 'lazy'
+            'loading' => 'lazy',
+            'style' => 'border: none; aspect-ratio: 16/9;'
         ]),
-        'advurl-youtube-embed',
-        ['style' => 'position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;']
+        'advurl-youtube-embed'
     );
 }
