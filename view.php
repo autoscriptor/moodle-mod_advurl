@@ -37,11 +37,27 @@ if ($id) {
     $course = get_course($advurl->course);
     $cm = get_coursemodule_from_instance('advurl', $advurl->id, $course->id, false, MUST_EXIST);
 } else {
-    print_error('invalidaccessparameter');
+    throw new moodle_exception('invalidaccessparameter', 'error');
 }
 
 require_course_login($course, true, $cm);
-// Log the view event and mark activity viewed for completion.
+
+// Check if user has capability to view this module.
+require_capability('mod/advurl:view', $PAGE->context);
+
+// Trigger course_module_viewed event.
+$params = [
+    'context' => $PAGE->context,
+    'objectid' => $advurl->id
+];
+
+$event = \mod_advurl\event\course_module_viewed::create($params);
+$event->add_record_snapshot('course_modules', $cm);
+$event->add_record_snapshot('course', $course);
+$event->add_record_snapshot('advurl', $advurl);
+$event->trigger();
+
+// Mark activity viewed for completion.
 $completion = new completion_info($course);
 $completion->set_module_viewed($cm);
 

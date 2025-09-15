@@ -15,22 +15,34 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version metadata for the advanced URL plugin.
+ * The Advanced URL course module instance list viewed event.
  *
  * @package    mod_advurl
- * @copyright  2025 Greystone College
+ * @copyright  2025 Waleed Alieldin <waleed@greystonecollege.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace mod_advurl\event;
+
 defined('MOODLE_INTERNAL') || die();
 
-// The current plugin version (date: YYYYMMDDXX).
-$plugin->version   = 2025091405;
-// Required Moodle version.
-$plugin->requires  = 2022041900; // Moodle 4.0 or later.
-// Full name of the plugin (used for diagnostics).
-$plugin->component = 'mod_advurl';
-// Maturity level of this plugin version.
-$plugin->maturity  = MATURITY_STABLE;
-// Human readable release version.
-$plugin->release   = '1.1.4';
+/**
+ * The Advanced URL course module instance list viewed event class.
+ *
+ * @package    mod_advurl
+ * @copyright  2025 Waleed Alieldin <waleed@greystonecollege.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class course_module_instance_list_viewed extends \core\event\course_module_instance_list_viewed {
+
+    /**
+     * Init method.
+     *
+     * @return void
+     */
+    protected function init() {
+        $this->data['objecttable'] = 'advurl';
+        $this->data['crud'] = 'r';
+        $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
+    }
+}

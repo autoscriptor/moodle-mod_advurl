@@ -44,6 +44,12 @@ $string['reportthankyou'] = 'Thank you. Your report has been submitted and our t
 $string['brokenlinkdialog'] = 'The link appears to be broken?';
 $string['brokenlinksubmit'] = 'Submit report';
 $string['privacy:metadata'] = 'The Advanced URL plugin stores user reports of broken links.';
+
+// Privacy metadata strings
+$string['privacy:metadata:advurl_reports'] = 'Information about broken link reports submitted by users.';
+$string['privacy:metadata:advurl_reports:reportedby'] = 'The ID of the user who reported the broken link.';
+$string['privacy:metadata:advurl_reports:reporttime'] = 'The timestamp when the broken link was reported.';
+$string['privacy:metadata:advurl_reports:status'] = 'The current status of the broken link report (open, resolved, or false positive).';
 $string['openinnewtab'] = 'Open Link in a New Tab';
 // Deprecated: Display description on course page – we now rely on Moodle’s built‑in course module setting.
 // $string['displaydescription'] = 'Display description on course page';
