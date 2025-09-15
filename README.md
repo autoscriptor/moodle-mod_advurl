@@ -137,51 +137,51 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 
 ## 📝 Changelog
 
-### Version 1.1.0 (2025-01-27)
+### Version 1.1.0
 - **Added**: Full backup and restore functionality for Moodle 2 format
 - **Added**: Event tracking system for course module views and analytics
 - **Added**: Privacy provider updates for new data types
 - **Enhanced**: Language strings for new features
 - **Improved**: Version management and upgrade path
 
-### Version 1.0.9 (2025-01-27)
+### Version 1.0.9
 - **Fixed**: YouTube video aspect ratio to eliminate black bars
 - **Improved**: Custom URL validation with better error messages
 - **Enhanced**: User experience with clearer validation feedback
 
-### Version 1.0.8 (2025-01-27)
+### Version 1.0.8
 - **Added**: Custom URL validation error messages
 - **Improved**: User guidance for URL format requirements
 
-### Version 1.0.7 (2025-01-27)
+### Version 1.0.7
 - **Fixed**: YouTube responsive embed parameters
 - **Enhanced**: Video display with modern CSS aspect-ratio
 
-### Version 1.0.6 (2025-01-27)
+### Version 1.0.6
 - **Fixed**: YouTube video aspect ratio issues
 - **Improved**: Video container styling
 
-### Version 1.0.5 (2025-01-27)
+### Version 1.0.5
 - **Fixed**: CSS compatibility for YouTube embed styling
 - **Enhanced**: Cross-version Moodle compatibility
 
-### Version 1.0.4 (2025-01-27)
+### Version 1.0.4
 - **Added**: Backward compatibility wrappers for function names
 - **Fixed**: Fresh installation compatibility issues
 
-### Version 1.0.3 (2025-01-27)
+### Version 1.0.3
 - **Fixed**: Syntax error in language file
 - **Improved**: Code quality
 
-### Version 1.0.2 (2025-01-27)
+### Version 1.0.2
 - **Fixed**: "Show Disclaimer" default value
 - **Enhanced**: Form behavior consistency
 
-### Version 1.0.1 (2025-01-27)
+### Version 1.0.1
 - **Fixed**: Function names to comply with Moodle frankenstyle standards
 - **Improved**: Code quality and documentation
 
-### Version 1.0.0 (2025-01-27)
+### Version 1.0.0
 - **Initial Release**: Complete Advanced URL functionality
 - **Features**: YouTube embedding, broken link reporting, dashboard
 - **Security**: GDPR compliance and capability-based access

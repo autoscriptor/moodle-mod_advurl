@@ -113,7 +113,6 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - `classes/event/`: event tracking system for analytics and logging.
 
 ### Current Version:
-- **2025012700**
 - Release: `1.1.0` (Stable)
 
 ---
