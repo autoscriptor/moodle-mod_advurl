@@ -3,7 +3,7 @@
 [![Moodle Plugin](https://img.shields.io/badge/Moodle-Plugin-orange.svg)](https://moodle.org/plugins/)
 [![Moodle Version](https://img.shields.io/badge/Moodle-4.0+-blue.svg)](https://moodle.org/)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.9-brightgreen.svg)](version.php)
+[![Version](https://img.shields.io/badge/Version-1.1.0-brightgreen.svg)](version.php)
 
 A powerful Moodle activity module that enhances external link management with advanced features including YouTube embedding, broken link reporting, and course-level configuration.
 
@@ -14,6 +14,8 @@ A powerful Moodle activity module that enhances external link management with ad
 - **Dynamic Disclaimer**: Customizable warnings with institution name
 - **YouTube Integration**: Automatic detection and embedding of YouTube videos
 - **Broken Link Reporting**: Configurable reporting system with status management
+- **Backup & Restore**: Full Moodle 2 format backup and restore support
+- **Event Tracking**: Comprehensive activity logging and analytics
 
 ### 🎯 Teacher Features
 - **Course Dashboard**: Centralized management interface
@@ -91,6 +93,9 @@ git clone https://github.com/autoscriptor/moodle-mod_advurl.git advurl
 - `dashboard.php`: Teacher management interface
 - `report.php`: Broken link reporting system
 - `mod_form.php`: Activity configuration form
+- `backup/`: Backup functionality for course exports
+- `restore/`: Restore functionality for course imports
+- `classes/event/`: Event tracking and analytics
 
 ### Capabilities
 - `mod/advurl:addinstance`: Create activities
@@ -131,6 +136,13 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 5. Submit a pull request
 
 ## 📝 Changelog
+
+### Version 1.1.0 (2025-01-27)
+- **Added**: Full backup and restore functionality for Moodle 2 format
+- **Added**: Event tracking system for course module views and analytics
+- **Added**: Privacy provider updates for new data types
+- **Enhanced**: Language strings for new features
+- **Improved**: Version management and upgrade path
 
 ### Version 1.0.9 (2025-01-27)
 - **Fixed**: YouTube video aspect ratio to eliminate black bars

@@ -108,10 +108,13 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 - `lang/en/advurl.php`: contains plugin language strings.
 - `pix/icon.svg`: plugin icon.
 - `classes/privacy/provider.php`: GDPR compliance implementation.
+- `backup/`: backup functionality for course exports (Moodle 2 format).
+- `restore/`: restore functionality for course imports (Moodle 2 format).
+- `classes/event/`: event tracking system for analytics and logging.
 
 ### Current Version:
-- **2025072909**
-- Release: `1.0.9` (Stable)
+- **2025012700**
+- Release: `1.1.0` (Stable)
 
 ---
 
@@ -167,7 +170,27 @@ The **Advanced URL plugin** is a custom Moodle activity module that improves upo
 
 ---
 
-## 🆕 Recent Improvements (v1.0.9)
+## 🆕 Recent Improvements (v1.1.0)
+
+### Backup & Restore System:
+- **Full Moodle 2 format support** for course backup and restore
+- **Complete data preservation** including all activity settings and reports
+- **Seamless migration** between Moodle installations
+- **Backward compatibility** with existing course backups
+
+### Event Tracking & Analytics:
+- **Course module view tracking** for usage analytics
+- **Instance list view events** for comprehensive monitoring
+- **Privacy-compliant logging** with GDPR data export/deletion
+- **Enhanced reporting capabilities** for administrators
+
+### Privacy & Security Enhancements:
+- **Updated privacy provider** with new data type definitions
+- **Enhanced data export** functionality for user requests
+- **Improved data deletion** processes for GDPR compliance
+- **Comprehensive event logging** for audit trails
+
+## Previous Improvements (v1.0.9)
 
 ### YouTube Video Enhancement:
 - **Fixed aspect ratio** to eliminate black bars (letterboxing)
