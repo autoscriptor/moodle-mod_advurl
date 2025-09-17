@@ -3,7 +3,7 @@
 [![Moodle Plugin](https://img.shields.io/badge/Moodle-Plugin-orange.svg)](https://moodle.org/plugins/)
 [![Moodle Version](https://img.shields.io/badge/Moodle-4.0+-blue.svg)](https://moodle.org/)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.1.0-brightgreen.svg)](version.php)
+[![Version](https://img.shields.io/badge/Version-1.1.1-brightgreen.svg)](version.php)
 
 A powerful Moodle activity module that enhances external link management with advanced features including YouTube embedding, broken link reporting, and course-level configuration.
 
@@ -136,6 +136,11 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 5. Submit a pull request
 
 ## 📝 Changelog
+
+### Version 1.1.1
+- **Fixed**: Added FEATURE_BACKUP_MOODLE2 support for plugin review compliance
+- **Updated**: Version number for Moodle.org plugin directory resubmission
+- **Enhanced**: Backup and restore functionality declaration
 
 ### Version 1.1.0
 - **Added**: Full backup and restore functionality for Moodle 2 format
