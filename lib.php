@@ -160,6 +160,9 @@ function mod_advurl_supports($feature) {
             return false;
         case FEATURE_GRADE_OUTCOMES:
             return false;
+        case FEATURE_BACKUP_MOODLE2:
+            // This module supports Moodle 2 format backup and restore.
+            return true;
         default:
             return null;
     }
