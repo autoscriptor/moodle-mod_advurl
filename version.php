@@ -33,4 +33,4 @@ $plugin->component = 'mod_advurl';
 // Maturity level of this plugin version.
 $plugin->maturity  = MATURITY_STABLE;
 // Human readable release version.
-$plugin->release   = '1.1.1';
+$plugin->release   = '1.1.5';
