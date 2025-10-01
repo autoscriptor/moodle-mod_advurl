@@ -25,8 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot . '/mod/advurl/restore/moodle2/restore_advurl_stepslib.php');
-
 /**
  * Advanced URL restore task
  *
