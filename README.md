@@ -3,7 +3,7 @@
 [![Moodle Plugin](https://img.shields.io/badge/Moodle-Plugin-orange.svg)](https://moodle.org/plugins/)
 [![Moodle Version](https://img.shields.io/badge/Moodle-4.0+-blue.svg)](https://moodle.org/)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.1.6-brightgreen.svg)](version.php)
+[![Version](https://img.shields.io/badge/Version-1.1.7-brightgreen.svg)](version.php)
 
 A powerful Moodle activity module that enhances external link management with advanced features including YouTube embedding, broken link reporting, and course-level configuration.
 
@@ -136,6 +136,12 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 5. Submit a pull request
 
 ## 📝 Changelog
+
+### Version 1.1.7 (2025-10-01)
+- **Fixed**: Removed require_once statements from BOTH backup and restore task files
+- **Fixed**: Activity duplication error - backup task now uses Moodle's auto-loading
+- **Improved**: Full compatibility with Moodle's backup/restore framework
+- **Note**: Moodle automatically discovers and loads all backup/restore classes
 
 ### Version 1.1.6 (2025-10-01)
 - **Fixed**: Course restore functionality - removed incorrect require_once statement in restore task

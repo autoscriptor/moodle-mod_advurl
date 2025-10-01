@@ -25,8 +25,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-require_once($CFG->dirroot . '/mod/advurl/backup/moodle2/backup_advurl_stepslib.php');
-
 /**
  * Advanced URL backup task
  *
